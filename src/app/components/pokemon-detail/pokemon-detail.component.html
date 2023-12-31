@@ -1,0 +1,94 @@
+<main>
+  <h1>Pokédex Nacional</h1>
+@if (pokemon) {
+  <div class="pokedex">
+    <div class="top">
+      <div class="top_container">
+        <div class="big_ball"></div>
+        <div class="little_balls_container">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <button mat-icon-button aria-label="Open right side panel" (click)="togglePokedex()">
+          <mat-icon>info</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div class="back_button_container">
+      <a [routerLink]="['/']">
+        <mat-icon>arrow_back</mat-icon>
+        <span>Volver al listado</span>
+      </a>
+    </div>
+    <div class="left">
+      <div class="left_container">
+        <div class="main_screen_border">
+          <div class="main_screen">
+            <img src="{{ pokemon.sprites.front_default }}" alt="{{ pokemon.name }}">
+            <h2>{{ pokemon.name | titlecase }}</h2>
+          </div>
+        </div>
+        <div class="controls">
+          <div class="big_ball"></div>
+          <div class="pad"></div>
+        </div>
+        <div class="bottom_screen">
+          <h3>Nº: {{ pokemon.id }}</h3>
+        </div>
+      </div>
+    </div>
+    @if (pokedexOpen) {
+      <div class="right">
+        <div class="info_screen">
+          <h4 class="details_title">Stats</h4>
+          <div>
+            <div class="stat_container">
+              <p>HP: {{hp_stat}}</p>
+              <mat-progress-bar mode="determinate" value="{{hp_percentage}}"></mat-progress-bar>
+            </div>
+            <div class="stat_container">
+              <p>Att: {{attack_stat}}</p>
+              <mat-progress-bar mode="determinate" value="{{attack_percentage}}"></mat-progress-bar>
+            </div>
+            <div class="stat_container">
+              <p>Def: {{defense_stat}}</p>
+              <mat-progress-bar mode="determinate" value="{{defense_percentage}}"></mat-progress-bar>
+            </div>
+            <div class="stat_container">
+              <p>Sp. Att: {{special_attack_stat}}</p>
+              <mat-progress-bar mode="determinate" value="{{special_attack_percentage}}"></mat-progress-bar>
+            </div>
+            <div class="stat_container">
+              <p>Sp. Def: {{special_defense_stat}}</p>
+              <mat-progress-bar mode="determinate" value="{{special_defense_percentage}}"></mat-progress-bar>
+            </div>
+            <div class="stat_container">
+              <p>Speed: {{speed_stat}}</p>
+              <mat-progress-bar mode="determinate" value="{{speed_percentage}}"></mat-progress-bar>
+            </div>
+          </div>
+          <h4 class="details_title">Types</h4>
+          <div class="type_container">
+            @for (types of pokemon.types; track $index) {
+              <p>{{ types.type.name | titlecase }}</p>
+            }
+          </div>
+          <h4 class="details_title">Weight</h4>
+          <p>{{ pokemon.weight }} lbs</p>
+          <h4 class="details_title">Height</h4>
+          <p>{{ pokemon.height }} ft</p>
+          <h4 class="details_title">Abilities</h4>
+          <div class="ability_container">
+            @for (abilities of pokemon.abilities; track $index) {
+              <p>{{ abilities.ability.name | titlecase }}</p>
+            }
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <mat-spinner></mat-spinner>
+}
+</main>

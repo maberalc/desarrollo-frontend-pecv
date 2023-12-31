@@ -1,0 +1,44 @@
+import { Component } from '@angular/core';
+import { PokemonsService } from '../../services/pokemons.service';
+import { NamedAPIResource } from '../../models/pokemon.interface';
+
+@Component({
+  selector: 'app-pokemons-list',
+  templateUrl: './pokemons-list.component.html',
+  styleUrl: './pokemons-list.component.css'
+})
+export class PokemonsListComponent {
+
+  pokemons: NamedAPIResource[] = [];
+  count: number = 0;
+  limit: number = 10;
+  offset: number = 0;
+  listMode: boolean = false;
+
+  constructor(private pokemonsService: PokemonsService) { }
+
+  ngOnInit(): void {
+    this.pokemonsService.getPokemons(this.limit, this.offset).subscribe((pokemons) => {
+      this.count = pokemons.count;
+      this.pokemons = pokemons.results;
+    });
+  }
+
+  onPageChange(event: any): void {
+    console.log(event);
+    this.limit = event.pageSize;
+    this.offset = event.pageIndex * event.pageSize;
+    this.pokemonsService.getPokemons(this.limit, this.offset).subscribe((pokemons) => {
+      this.pokemons = pokemons.results;
+    });
+  }
+
+  setListMode(): void {
+    this.listMode = true;
+  }
+
+  setCardMode(): void {
+    this.listMode = false;
+  }
+
+}

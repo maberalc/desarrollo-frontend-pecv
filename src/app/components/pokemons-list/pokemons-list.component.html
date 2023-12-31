@@ -1,0 +1,48 @@
+<main>
+  <h1>Pokédex</h1>
+  <div class="mode_buttons">
+    <button [disabled]="!listMode" mat-icon-button aria-label="Cards" (click)="setCardMode()">
+      <mat-icon>dashboard</mat-icon>
+    </button>
+    <button [disabled]="listMode" mat-icon-button aria-label="List" (click)="setListMode()">
+      <mat-icon>lists</mat-icon>
+    </button>
+  </div>
+  
+  @if (listMode) {
+    <mat-list>
+      @for (pokemon of pokemons; track $index) {
+        <mat-list-item>
+          <a [routerLink]="['/pokemon', pokemon.url.split('/').at(-2)]">
+            <span>{{pokemon.url.split('/').at(-2)}}. {{ pokemon.name | titlecase }}</span>
+            <mat-icon>arrow_forward</mat-icon>
+          </a>
+        </mat-list-item>
+      }
+    </mat-list>
+  } @else {
+    <div class="grid">
+    @for (pokemon of pokemons; track $index) {
+      <mat-card>
+        <a [routerLink]="['/pokemon', pokemon.url.split('/').at(-2)]">
+          <mat-card-header>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url.split('/').at(-2)}}.png" [alt]="pokemon.name">
+          </mat-card-header>
+          <mat-card-content>
+            <mat-card-title>
+              <span>{{pokemon.url.split('/').at(-2)}}. {{ pokemon.name | titlecase }}</span>
+            </mat-card-title>
+          </mat-card-content>
+        </a>
+      </mat-card>
+    }
+    </div>
+  }
+
+  <mat-paginator [length]="count"
+                [pageSize]="limit"
+                [pageSizeOptions]="[5, 10, 25, 100]"
+                (page)="onPageChange($event)"
+                aria-label="Select page">
+  </mat-paginator>
+</main>

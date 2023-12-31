@@ -1,0 +1,94 @@
+main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.mode_buttons {
+  margin-bottom: 1rem;
+}
+
+mat-card {
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 650px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid a {
+  text-decoration: none;
+  color: black;
+}
+
+mat-list {
+  width: 40%;
+  min-width: 350px;
+}
+
+mat-list a {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eee;
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: black;
+}
+
+mat-list a:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+mat-paginator {
+  margin-top: 1rem;
+}
