@@ -23,18 +23,7 @@
   } @else {
     <div class="grid">
     @for (pokemon of pokemons; track $index) {
-      <mat-card>
-        <a [routerLink]="['/pokemon', pokemon.url.split('/').at(-2)]">
-          <mat-card-header>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{{pokemon.url.split('/').at(-2)}}.png" [alt]="pokemon.name">
-          </mat-card-header>
-          <mat-card-content>
-            <mat-card-title>
-              <span>{{pokemon.url.split('/').at(-2)}}. {{ pokemon.name | titlecase }}</span>
-            </mat-card-title>
-          </mat-card-content>
-        </a>
-      </mat-card>
+      <app-list-card [id]="pokemon.url.split('/').at(-2) ?? ''" [name]="pokemon.name"></app-list-card>
     }
     </div>
   }

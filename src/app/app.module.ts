@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ListCardComponent } from './components/list-card/list-card.component';
 
 
 
@@ -22,7 +23,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   declarations: [
     AppComponent,
     PokemonsListComponent,
-    PokemonDetailComponent
+    PokemonDetailComponent,
+    ListCardComponent
   ],
   imports: [
     BrowserModule,

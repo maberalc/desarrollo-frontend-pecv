@@ -15,26 +15,6 @@ main {
   margin-bottom: 1rem;
 }
 
-mat-card {
-  background-color: #eee;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-mat-card:hover {
-  background-color: #ddd;
-  cursor: pointer;
-}
-
-mat-card-header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -58,11 +38,6 @@ mat-card-header {
   @media (max-width: 425px) {
     grid-template-columns: 1fr;
   }
-}
-
-.grid a {
-  text-decoration: none;
-  color: black;
 }
 
 mat-list {

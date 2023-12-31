@@ -1,0 +1,24 @@
+a {
+  text-decoration: none;
+  color: black;
+}
+
+mat-card {
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+mat-card:hover {
+  background-color: #ddd;
+  cursor: pointer;
+}
+
+mat-card-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
