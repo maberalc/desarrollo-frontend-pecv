@@ -45,25 +45,6 @@ mat-list {
   min-width: 350px;
 }
 
-mat-list a {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #eee;
-  width: 100%;
-  padding: 8px 16px;
-  border-radius: 8px;
-  box-sizing: border-box;
-  text-decoration: none;
-  color: black;
-}
-
-mat-list a:hover {
-  background-color: #ddd;
-  cursor: pointer;
-}
-
 mat-paginator {
   margin-top: 1rem;
 }

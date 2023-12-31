@@ -12,12 +12,7 @@
   @if (listMode) {
     <mat-list>
       @for (pokemon of pokemons; track $index) {
-        <mat-list-item>
-          <a [routerLink]="['/pokemon', pokemon.url.split('/').at(-2)]">
-            <span>{{pokemon.url.split('/').at(-2)}}. {{ pokemon.name | titlecase }}</span>
-            <mat-icon>arrow_forward</mat-icon>
-          </a>
-        </mat-list-item>
+        <app-list-item [id]="pokemon.url.split('/').at(-2) ?? ''" [name]="pokemon.name"></app-list-item>
       }
     </mat-list>
   } @else {
