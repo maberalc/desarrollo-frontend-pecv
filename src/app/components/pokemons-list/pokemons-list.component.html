@@ -10,17 +10,21 @@
   </div>
   
   @if (listMode) {
-    <mat-list>
+    <mat-list [@fadeIn]>
       @for (pokemon of pokemons; track $index) {
         <app-list-item [id]="pokemon.url.split('/').at(-2) ?? ''" [name]="pokemon.name"></app-list-item>
       }
     </mat-list>
   } @else {
-    <div class="grid">
+    <div class="grid" [@fadeIn]>
     @for (pokemon of pokemons; track $index) {
       <app-list-card [id]="pokemon.url.split('/').at(-2) ?? ''" [name]="pokemon.name"></app-list-card>
     }
     </div>
+  }
+
+  @if (pokemons === undefined) {
+    <mat-spinner></mat-spinner>
   }
 
   <mat-paginator [length]="count"
